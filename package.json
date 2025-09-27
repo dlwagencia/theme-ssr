@@ -1,0 +1,14 @@
+{
+  "name": "theme-ssr",
+  "version": "1.0.0",
+  "description": "theme ssr express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server"
+  },
+  "author": "Diego Leismann de Quadros",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
