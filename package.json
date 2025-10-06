@@ -4,11 +4,12 @@
   "description": "theme ssr express",
   "main": "server.js",
   "scripts": {
-    "start": "node --env-file=.env server"
+    "start": "node server"
   },
   "author": "Diego Leismann de Quadros",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.1.0"
   }
 }

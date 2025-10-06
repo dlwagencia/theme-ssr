@@ -1,15 +1,19 @@
+require('dotenv').config();
 const express = require('express');
-const HomeView = require('./views/home.js');
-const notFoundView = require('./views/notFound.js');
-const PostView = require('./views/post.js')
+const Theme = require('./theme.js');
 const server = express();
+const theme = new Theme();
+const port = process.env.PORT || 80;
 
 server.use(express.static('public'))
-server.get('/post/:url', PostView)
-server.get('/', HomeView);
-server.get('/:page', notFoundView);
+server.get('/post/:url', theme.post)
+server.get('/', theme.home);
+server.get('/:page', theme.error);
 
-server.listen(80, () => {
+server.use((err, req, res, next) => {
+  res.status(500).send(err.message + " - " + err.stack);
+});
+server.listen(port, () => {
   console.log('Site Rodando!');
 });
 
