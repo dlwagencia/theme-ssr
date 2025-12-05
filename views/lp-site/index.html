@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Básico -->
+    <title>Criação de Site Profissional | DLW Agência Online</title>
+    <meta name="description" content="Aumente suas vendas online com um site profissional. Desenvolvimento web focado em conversão, SEO e performance para empresas que buscam crescimento.">
+    <meta name="keywords" content="criação de sites, desenvolvimento web, sites corporativos, SEO, vendas online, web design">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dlw.dev.br">
+
+    <!-- Fontes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        :root {
+            --primary-color: #110044; /* Azul Marinho Corporativo */
+            --secondary-color: #0055bb; /* Azul mais claro */
+            --accent-color: #e67e22; /* Laranja para Call to Action */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --spacing-standard: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HERO SECTION (Banner + Formulário) --- */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-benefits ul {
+            list-style: none;
+        }
+
+        .hero-benefits li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-benefits li::before {
+            content: "✔";
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* --- FORMULÁRIO --- */
+        .hero-form-wrapper {
+            flex: 0 0 400px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .hero-form-wrapper h3 {
+            color: #05b;
+        }
+        .hero-form-wrapper p {
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .hero-form-wrapper {
+                flex: 1 1 100%;
+            }
+        }
+
+        .hero-form-wrapper h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #d35400;
+        }
+
+        /* --- PROCESSO (COMO FAZEMOS) --- */
+        .process-section {
+            padding: var(--spacing-standard) 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            color: rgba(15, 36, 64, 0.1);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-weight: bold;
+        }
+
+        .step-card h4 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        /* --- DEPOIMENTOS --- */
+        .testimonials-section {
+            padding: var(--spacing-standard) 0;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .client-info h5 {
+            color: var(--primary-color);
+            margin-bottom: 2px;
+        }
+
+        .client-info span {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* --- FAQ --- */
+        .faq-section {
+            padding: var(--spacing-standard) 0;
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .faq-question.active::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-right: 20px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+            color: #555;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HERO / BANNER INICIAL -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-title">
+                <a href="https://dlw.dev.br" target="_blank"><img class="logo" src="lp/images/logo-dlw-agencia.png" alt="Marca da empresa DLW Agência Online"></a>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Criação de Site Profissional</h1>
+                    <p>Desenvolvemos projetos pensados de forma estratégica, focados na experiência do usuário e na conversão de leads. Transforme visitantes em clientes fiéis com uma plataforma robusta e profissional.</p>
+                    
+                    <div class="hero-benefits">
+                        <ul>
+                            <li>Design responsivo adaptado para todos os dispositivos.</li>
+                            <li>Otimização SEO para liderar as buscas no Google.</li>
+                            <li>Performance otimizada para carregamento ultrarrápido.</li>
+                            <li>Integração total com suas ferramentas de marketing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero-form-wrapper">
+                    <h3>Quer um orçamento?</h3>
+                    <p>Solicite AGORA seu orçamento</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="name" name="name" data-field="name" data-label="Nome" class="form-control" required placeholder="Seu nome" oninvalid="this.setCustomValidity('Preencha o campo corretamente')">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo</label>
+                            <input type="email" id="email" name="email" data-field="contact.email" data-label="E-mail" class="form-control" required placeholder="seu@email.com" oninvalid="this.setCustomValidity('Preencha o campo corretamente')">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="whatsapp">Telefone/WhatsApp</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" data-field="contact.whatsapp" data-label="Telefone/Whatsapp"  class="form-control" required placeholder="(XX) XXXXX-XXXX" oninvalid="this.setCustomValidity('Preencha o campo corretamente')">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company_size">Qual cenário atual da sua empresa?</label>
+                            <select id="company_size" name="company_size" data-field="customFields.company_size" data-label="Cenário da empresa" class="form-control" required oninvalid="this.setCustomValidity('Preencha o campo corretamente')">
+                                <option value="" disabled selected>Selecione uma opção</option>
+                                <option value="10">1 a 10 colaboradores</option>
+                                <option value="30">10 a 30 colaboradores</option>
+                                <option value="50">30 a 50 colaboradores</option>
+                                <option value="60">Mais que 50 colaboradores</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project">Descrição do Projeto</label>
+                            <textarea id="project" name="project" data-field="customFields.project" data-label="Descrição do projeto" class="form-control" placeholder="Descreva brevemente sua necessidade..." oninvalid="this.setCustomValidity('Preencha o campo corretamente')"></textarea>
+                        </div>
+                        <div id="errors"></div>
+                        <button type="submit" class="btn-submit">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ETAPAS DO PROCESSO -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Nossa Metodologia</h2>
+            <div class="steps-grid">
+                <!-- Etapa 1 -->
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h4>Análise Estratégica</h4>
+                    <p>Realizamos um estudo aprofundado do seu modelo de negócio, público-alvo e concorrência para definir as diretrizes do projeto.</p>
+                </div>
+                <!-- Etapa 2 -->
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h4>Planejamento e Design</h4>
+                    <p>Elaboramos a arquitetura da informação e criamos interfaces focadas na usabilidade (UX/UI) e na identidade visual da sua marca.</p>
+                </div>
+                <!-- Etapa 3 -->
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h4>Desenvolvimento</h4>
+                    <p>Programação utilizando as tecnologias mais modernas, garantindo segurança, código limpo e responsividade em qualquer dispositivo.</p>
+                </div>
+                <!-- Etapa 4 -->
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h4>Resultados e Lançamento</h4>
+                    <p>Testes rigorosos de performance e SEO, seguidos pelo lançamento oficial e monitoramento de métricas de conversão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A reformulação do nosso portal corporativo foi um divisor de águas. A equipe demonstrou profissionalismo ímpar e o aumento nas cotações online foi de 40% no primeiro mês."</p>
+                    <div class="client-info">
+                        <h5>Carlos Mendes</h5>
+                        <span>Diretor Comercial, TechSolutions</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Buscávamos uma agência que entendesse a complexidade do mercado B2B. O resultado final superou as expectativas, entregando não apenas um site, mas uma ferramenta de vendas."</p>
+                    <div class="client-info">
+                        <h5>Fernanda Souza</h5>
+                        <span>Gerente de Marketing, Logística Brasil</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O suporte e a atenção aos detalhes durante a fase de desenvolvimento foram excelentes. O site é rápido, seguro e transmite a credibilidade que nossa empresa precisava."</p>
+                    <div class="client-info">
+                        <h5>Roberto Almeida</h5>
+                        <span>CEO, Grupo Inova</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container faq-container">
+            <h2 class="section-title" style="text-align: center;">Perguntas Frequentes (FAQ)</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question">Qual é o prazo médio para o desenvolvimento de um site?</button>
+                <div class="faq-answer">
+                    <p>O prazo varia conforme a complexidade do projeto. Sites institucionais padrão levam em média de 20 a 30 dias úteis, enquanto projetos complexos ou e-commerces podem requerer de 45 a 60 dias. Um cronograma detalhado é apresentado na fase de Planejamento.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">O site será otimizado para o Google (SEO)?</button>
+                <div class="faq-answer">
+                    <p>Sim. Todos os nossos projetos são desenvolvidos seguindo as melhores práticas de SEO Técnico, incluindo estrutura semântica correta, otimização de velocidade, meta tags e sitemaps, para facilitar a indexação pelos motores de busca.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Vocês oferecem manutenção após a entrega?</button>
+                <div class="faq-answer">
+                    <p>Sim, oferecemos pacotes de suporte e manutenção contínua para garantir que seu site permaneça seguro, atualizado e funcionando perfeitamente. Consulte nossas opções no momento do orçamento.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">O site funcionará em celulares e tablets?</button>
+                <div class="faq-answer">
+                    <p>Absolutamente. Adotamos a abordagem "Mobile First", garantindo que a experiência do usuário seja impecável em smartphones, tablets e desktops, adaptando o layout automaticamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DLW Agência Online. Todos os direitos reservados.</p>
+            <p>Design e Tecnologia para transformar o seu negócio.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="lp/form.js?t=1" type="text/javascript"></script>
+    <script>
+        // Lógica do FAQ (Acordeão)
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                // Fecha outros itens abertos (opcional, remova se quiser permitir múltiplos abertos)
+                const activeQuestion = document.querySelector('.faq-question.active');
+                if (activeQuestion && activeQuestion !== question) {
+                    activeQuestion.classList.remove('active');
+                    activeQuestion.nextElementSibling.style.maxHeight = null;
+                }
+
+                // Alterna o estado do item clicado
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                
+                if (question.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+
+        
+    
+    const form = new FormIntegration({ 
+        id:"contactForm",
+        responseTag:"errors",
+        url: '/agendor/v3/people/upsert',
+        request:{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+        }
+    })
+    form.enableDebug()
+    form.setSubmitAction()
+</script>
+</body>
+</html>

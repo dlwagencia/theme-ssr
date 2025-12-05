@@ -1,9 +1,41 @@
+
 const render = require('./components/render.js');
 const { Post, dateFormat } = require('./components/post.js');
+const token = "3685df46-9a0e-4c1c-9458-6c94c8bf0a3e"
 const post = new Post();
 class Theme {
-    constructor() {
-
+    constructor() {}
+    async page(req, res){
+        let index = '';
+        if(req.url == '/criacao-de-site-profissional'){
+            index = await render('views/lp-site/index',{});
+        }
+        res.send(index);
+    }
+    async api(req, res){
+        let bodyJson = req.body;
+        console.log(bodyJson, 'JSON');
+        let data = '';
+        let errortext = '';
+        if(req.url == '/agendor/v3/people/upsert'){
+            const url = "https://api.agendor.com.br/v3/people/upsert";
+            try {
+                const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": `Token ${token}`,
+                },
+                body: JSON.stringify(bodyJson)
+                });
+                data = await response.json();
+                
+            } catch (error) {
+                errortext = `${String(error)} ${error} ${error.toString()}`
+            }
+            
+        }
+        res.json({data, errortext});
     }
     async post(req, res) {
         const url = req.params.url
@@ -22,7 +54,7 @@ class Theme {
         res.send(index);
     }
     async home(req, res) {
-        const posts = (await post.getPosts()).splice(0, 3);
+        const posts = await post.getPosts()
         let postsTemplate = '';
         if (posts.error) {
             res.send('error:' + posts.error);

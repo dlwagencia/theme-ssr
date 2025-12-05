@@ -1,0 +1,19 @@
+{
+  "name": "agendor-form-integration",
+  "version": "1.0.0",
+  "description": "landingpage integration agendor",
+  "main": "index.html",
+  "scripts": {
+    "serve": "http-server -c-1 . "
+  },
+  "keywords": [
+    "landing",
+    "page",
+    "website",
+    "form",
+    "integration",
+    "agendor"
+  ],
+  "author": "Diego Leismann",
+  "license": "MIT"
+}

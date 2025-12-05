@@ -1,7 +1,7 @@
 
 /* Variables */
 
-const base_url = "http://api.dlw.dev.br"
+const base_url = "https://api.dlw.dev.br"
 const url = base_url + "/api/contact";
 const dom = (id) => (document.getElementById(id));
 const query = (id) => (document.querySelector(id));

@@ -6,7 +6,10 @@ const theme = new Theme();
 const port = process.env.PORT || 80;
 
 server.use(express.static('public'))
-server.get('/post/:url', theme.post)
+server.use(express.json());
+server.get('/criacao-de-site-profissional', theme.page);
+server.post('/agendor/v3/people/upsert', theme.api);
+server.get('/post/:url', theme.post);
 server.get('/', theme.home);
 server.get('/:page', theme.error);
 

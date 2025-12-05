@@ -1,4 +1,5 @@
 
+const fetch = require('node-fetch');
 const base_url = process.env.API_URL
 class Post {
   constructor() {
