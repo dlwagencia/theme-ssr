@@ -1,9 +1,36 @@
-/*<div class="form-group">
-    <label for="email">E-mail Corporativo</label>
-    <input type="email" id="email" name="email" data-field="contact.email" data-label="E-mail" class="form-control" required placeholder="seu@email.com" oninvalid="this.setCustomValidity('Preencha o campo corretamente')">
-</div>*/
-
-const InputText = new InputTemplate(`<div class="form-group">
+const InputText = `<div class="form-group">
     <label for="{{id}}">{{label}}</label>
-    <input type="{{id}}" id="{{id}}" name="{{id}}" data-field="{{field}}" data-label="{{field}}" class="form-control" {{required}} placeholder="{{placeholder}}" {{oninvalid}}>
-</div>`)
+    <input type="{{type}}" id="{{id}}" name="{{id}}" class="form-control" required placeholder="{{placeholder}}" oninvalid="this.setCustomValidity('Preencha o campo {{label}} corretamente')">>
+</div>`
+
+const InputTextarea = `<div class="form-group">
+    <label for="{{id}}">{{label}}</label>
+    <textarea id="{{id}}" name="{{id}}" class="form-control" required placeholder="{{placeholder}}" oninvalid="this.setCustomValidity('Preencha o campo {{label}} corretamente')"></textarea>
+</div>`    
+
+const InputSelect = `<div class="form-group">
+    <label for="{{id}}">{{label}}</label>
+    <textarea id="{{id}}" name="{{id}}" class="form-control" required placeholder="{{placeholder}}" oninvalid="this.setCustomValidity('Preencha o campo {{label}} corretamente')"></textarea>
+</div>` 
+
+Form(
+    InputText({
+        label:"Nome Completo",
+        id:"name",
+        type:"text",
+        placeholder:"Nome Completo",
+    }),
+    InputText({
+        label:"E-mail",
+        id:"email",
+        type:"text",
+        placeholder:"Nome Completo",
+        
+    }),
+    InputText({
+        label:"Telefone/Whatsapp",
+        id:"name",
+        type:"text",
+        placeholder:"",
+    }),
+)
