@@ -30,3 +30,9 @@ server.listen(port, () => {
   console.log('Site Rodando!');
 });
 
+const options = {
+  cert: fs.readFileSync('/etc/letsencrypt/live/dlw.dev.br/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/dlw.dev.br/privkey.pem')
+};
+
+https.createServer(options, server).listen(443);
