@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('fs');
 const express = require('express');
 const Theme = require('./theme.js');
 const cors = require('cors');
@@ -7,7 +8,7 @@ const theme = new Theme();
 const port = process.env.PORT || 80;
 
 server.use(cors({
-    origin: 'http://localhost',
+    origin: ['http://localhost','https://dlw.dev.br','http://dlw.dev.br'],
     optionsSuccessStatus : 200 
 }));
 
