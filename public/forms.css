@@ -1,0 +1,69 @@
+
+.label {
+  font-family: "Montserrat";
+  display: block;
+  margin: 5px 0px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.input-text {
+  box-shadow: none;
+  display: block;
+  font-family: "Montserrat";
+  font-size: 14px;
+  border: 1px solid #666;
+  border-radius: 7px;
+  line-height: 15px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.input-text:hover,
+.input-text:focus {
+  outline: 0;
+  border-color: #09e;
+  color: #09e;
+}
+.input-text.error {
+  color: red;
+  border-color: red;
+}
+.input-textarea {
+  box-shadow: none;
+  display: block;
+  font-family: "Montserrat";
+  font-size: 15px;
+  border: 1px solid #666;
+  border-radius: 7px;
+  line-height: 15px;
+  box-sizing: border-box;
+  padding: 10px;
+  line-height: 15px;
+  height: 80px;
+  width: 100%;
+  color: #666;
+}
+.input-textarea:hover,
+.input-textarea:focus {
+  outline: 0;
+  border-color: #09e;
+  color: #09e;
+}
+.input-textarea.error {
+  color: red;
+  border-color: red;
+}
+.select{
+  box-shadow: none;
+  display: block;
+  font-family: "Montserrat";
+  font-size: 14px;
+  border: 1px solid #666;
+  border-radius: 7px;
+  line-height: 15px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}

@@ -4,11 +4,12 @@
   "description": "theme ssr express",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "node --watch-path=. server"
   },
   "author": "Diego Leismann de Quadros",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "node-fetch": "^2.6.7"

@@ -1,0 +1,94 @@
+<div class="header">
+  <div class="container">
+    <div class="row relative">
+        <a class="logo" href="/">
+          <img width="160" height="30" src="/images/header/logo-dlw.png" />
+        </a>
+        <div class="menu-mobile" onclick="show(event,'.menu');hide(event,'.menu-solution');"></div>
+        <nav class="menu">
+
+          <a onclick="show(event, '.menu-solution'); hide(event, '.menu');">
+          Soluções
+          </a>
+
+          <a onclick="menuSolutionHidden(event)" href="/cases">
+          Cases
+          </a>
+
+          <a onclick="menuItem(event)" href="/agency" >
+          Quem somos
+          </a>
+          
+          <!--a onclick="menuItem(event)" href="/blog" >
+          Blog
+          </a-->
+           
+          <a class="link-button" href="/contact">
+            <button class="button">
+            Entre em contato
+            </button>
+          </a>
+        </nav>
+        <nav class="menu-solution row">
+          <div class="col">
+            <h2>Soluções</h2>
+          </div>
+          <div class="col">
+            <h3>Design</h3>
+            <a onclick="menuItem(event)" href="/solution/design-grafico">
+              Design Gráfico
+            </a>
+            <a onclick="menuItem(event)" href="/solution/identidade-visual">
+              Identidade Visual
+            </a>
+            <a onclick="menuItem(event)" href="/solution/branding">
+              Branding
+            </a>
+            <a onclick="menuItem(event)" href="/solution/ui-ux-design">
+              UI/UX Design
+            </a>
+            <a onclick="menuItem(event)" href="/solution/web-design">
+              Web Design
+            </a>
+          </div>
+          <div class="col">
+            <h3>Desenvolvimento</h3>
+            <a onclick="menuItem(event)" href="/solution/aplicativo-mobile">
+              Aplicativos Mobile
+            </a>
+            <a onclick="menuItem(event)" href="/solution/criacao-de-site-profissional">
+              Criação de Site 
+            </a>
+            <a onclick="menuItem(event)" href="/solution/desenvolvimento-web">
+              Desenvolvimento Web
+            </a>
+            <a onclick="menuItem(event)" href="/solution/loja-virtual">
+              Loja Virtual
+            </a>
+            <a onclick="menuItem(event)" href="/solution/integracao-e-api">
+              Integração e API
+            </a>
+            <a onclick="menuItem(event)" href="/solution/projeto-mvp">
+              Projeto MVP
+            </a>
+          </div>
+          <div class="col">
+            <h3>Marketing</h3>
+            <a onclick="menuItem(event)" href="/solution/trafego-pago">
+              Trafego Pago
+            </a>
+            <a onclick="menuItem(event)" href="/solution/Influencer-marketing">
+              Influencer Marketing
+            </a>
+            <a onclick="menuItem(event)" href="/solution/gestao-de-midia-social">
+              Gestão de Mídias Sociais
+            </a>
+            <a onclick="menuItem(event)" href="/solution/producao-de-video">
+              Produção de Vídeos
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 
 /* Variables */
 
-const base_url = "https://api.dlw.dev.br"
+const base_url = "http://localhost"
 const url = base_url + "/api/contact";
 const dom = (id) => (document.getElementById(id));
 const query = (id) => (document.querySelector(id));
@@ -39,7 +39,7 @@ const onload = () => {
       if (!field || String(field).trim() == "") {
         let input = query(`[name='${name}']`)
         input.classList.add('error');
-        let message = `<span class="error">${messages[name]}</div>`
+        let message = `<span class="error">${messages[name]}</span>`
         errors.push(message);
       }
 
@@ -70,7 +70,7 @@ const onload = () => {
       name: "Digite o Nome",
       email: "Digite o Email",
       phone: "Digite o Telefone",
-      message: "Digite a Mensagem"
+      message: "Digite a Mensagem",
     }
 
     let errors = isRequired(data, messages);

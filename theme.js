@@ -1,41 +1,103 @@
-
+const fs = require('fs').promises;
+const fetch = require('node-fetch');
 const render = require('./components/render.js');
 const { Post, dateFormat } = require('./components/post.js');
 const token = "3685df46-9a0e-4c1c-9458-6c94c8bf0a3e"
 const post = new Post();
+const theme_dir = "./theme"
+
+
 class Theme {
     constructor() {}
-    async page(req, res){
-        let index = '';
-        if(req.url == '/criacao-de-site-profissional'){
-            index = await render('views/lp-site/index',{});
+    async index (req, res){
+        
+        const index = require('./theme/index.js');
+        
+        const head = await render(`${theme_dir}/${index.head?.[0]?.[0]}`, index.head?.[0]?.[1]); 
+
+        const bodyItens = [] 
+        for(let item of index.body){
+            bodyItens.push(await render(`${theme_dir}/${item[0]}`, item[1]));
         }
-        res.send(index);
+        const body = bodyItens.join('');
+        const theme = await render(`${theme_dir}/layout.html`, {head, body});
+        res.send(theme);
     }
-    async api(req, res){
-        let bodyJson = req.body;
-        console.log(bodyJson, 'JSON');
-        let data = '';
-        let errortext = '';
-        if(req.url == '/agendor/v3/people/upsert'){
-            const url = "https://api.agendor.com.br/v3/people/upsert";
-            try {
-                const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": `Token ${token}`,
-                },
-                body: JSON.stringify(bodyJson)
-                });
-                data = await response.json();
-                
-            } catch (error) {
-                errortext = `${String(error)} ${error} ${error.toString()}`
-            }
-            
+    async page(req, res){
+        const page = require('./theme/page.js');
+        const page_content = req.url.replace("/","");
+        if(page_content == 'favicon.ico'){
+            res.status('404').send('NOT FOUND');
+            return;
         }
-        res.json({data, errortext});
+        const head = await render(`${theme_dir}/${page.head?.[0]?.[0]}`, page.head?.[0]?.[1],res); 
+        
+        const bodyItens = [] 
+        for(let item of page.body){
+            if(item[0] == 'content'){
+                bodyItens.push(await render(`${theme_dir}/page/${page_content}.html`, item[1],res));
+                continue;
+            }
+            bodyItens.push(await render(`${theme_dir}/${item[0]}`, item[1],res));
+        }
+        const body = bodyItens.join('');
+        const theme = await render(`${theme_dir}/layout.html`, {head, body}, res);
+        res.send(theme); 
+    }
+
+    async api_contact(req, res){
+        const base_url = process.env.API_AGENDOR
+        const token = process.env.TOKEN_AGENDOR
+        let body = req.body;
+        console.log(body, 'JSON');
+        let message = "Mensagem enviada com sucesso!"
+        let error = null;
+        const response = await fetch(base_url + `/people`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`
+            },
+            body: JSON.stringify({
+                name: body.name,
+                "contact": {
+                    "email": body.email,
+                    "whatsapp": body.phone,
+                },
+                "customFields":{
+                    "message":body.message,
+                    "company_size": body.company_size || ""
+                }
+            })
+        });
+
+        console.log(response);
+
+        if(error){
+            message = "API Indísponivel"
+        }
+        res.json({message, error});
+    }
+    async blog(req, res){
+        const page = require('./theme/blog.js');
+        const page_content = req.url.replace("/","");
+        if(page_content == 'favicon.ico'){
+            res.status('404').send('NOT FOUND');
+            return;
+        }
+        const head = await render(`${theme_dir}/${page.head?.[0]?.[0]}`, page.head?.[0]?.[1],res); 
+        
+        const bodyItens = [] 
+        for(let item of page.body){
+            if(item[0] == 'blog'){
+                bodyItens.push(await render(`${theme_dir}/blog/index.html`, {}, res));
+                continue;
+            }
+            bodyItens.push(await render(`${theme_dir}/${item[0]}`, item[1],res));
+        }
+        const body = bodyItens.join('');
+        const theme = await render(`${theme_dir}/layout.html`, {head, body}, res);
+        res.send(theme); 
     }
     async post(req, res) {
         const url = req.params.url
@@ -84,11 +146,7 @@ class Theme {
         res.send(index);
     }
     async error(req, res) {
-        const indexData = {
-            content: '<div id="not-found"><p>Página não encontrada</p></div>',
-            title: "Página não encontrada"
-        }
-        const index = await render('views/index', indexData);
+        const index = "NOT FOUND";
         res.send(index);
     }
 }
